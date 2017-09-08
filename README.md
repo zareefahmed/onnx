@@ -32,19 +32,41 @@ conda install -c ezyang onnx
 
 ## Source
 
-You can also install ONNX from source with [pip](https://pip.pypa.io):
+If you are installing from source, we highly recommend installing an
+[Anaconda](https://www.anaconda.com/download/) environment.  Once you
+have it installed, here are the instructions:
+
+**Get submodules**
 
 ```
-pip install onnx
+git submodule update --init --recursive
 ```
 
-After installation, do
+**Install dependencies**
+
+```
+# Use conda-forge protobuf, as defaults doesn't come with protoc
+conda install -c conda-forge protobuf numpy
+```
+
+**Install onnx**
+
+```
+python setup.py install
+```
+
+After installation, cd into another directory and run
 
 ```
 python -c 'import onnx'
 ```
 
-to verify it works.
+to verify it works.  If you forget to change directories,
+you'll see:
+
+```
+ModuleNotFoundError: No module named 'onnx.onnx_cpp2py_export'
+```
 
 # Testing
 
